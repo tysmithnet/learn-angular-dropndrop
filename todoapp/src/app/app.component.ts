@@ -11,7 +11,7 @@ export class AppComponent implements OnInit{
   title = 'todoapp';
   boards: Board[] = DUMMY_BOARDS;
   selectedBoard: Board | undefined = DUMMY_BOARDS[0];
-  
+  newColumnText: string | undefined;
   selectBoard(board: Board | undefined) {
     this.selectedBoard = board;
   }

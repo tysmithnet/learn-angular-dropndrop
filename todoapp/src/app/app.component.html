@@ -18,12 +18,18 @@
 <div class="column-container">
   <div *ngFor="let column of selectedBoard?.columns" class="column mat-elevation-z2">
     <h2>{{column.title}}</h2>
-    <mat-card class="card" *ngFor="let card of column?.cards">
-      <mat-card-content>
-        <b>{{card.title}}</b>
-        <p class="card-description" *ngIf="card.description">{{card.description}}</p>
-      </mat-card-content>
-    </mat-card>
+    <div class="card mat-elevation-z2" *ngFor="let card of column?.cards">
+      <h4>{{card.title}}</h4>
+      <p>{{card.description}}</p>
+      <div class="card-action-container">
+      </div>
+    </div>
+  </div>
+  <div class="column">
+    <mat-form-field appearance="fill">
+      <mat-label>New Column</mat-label>
+      <input matInput placeholder="Placeholder" [(ngModel)]="newColumnText">
+    </mat-form-field>
   </div>
 </div>
 
