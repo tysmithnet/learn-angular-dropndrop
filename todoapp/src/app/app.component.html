@@ -1,5 +1,5 @@
 <mat-toolbar>
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+  <button [matMenuTriggerFor]="menu" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
     <mat-icon>menu</mat-icon>
   </button>
   <span>My App</span>
@@ -10,24 +10,19 @@
   <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
     <mat-icon>share</mat-icon>
   </button>
+  <mat-menu #menu="matMenu">
+    <button *ngFor="let board of boards; let i = index" mat-menu-item (click)="selectBoard(board)">{{board.title}}</button>
+  </mat-menu>
 </mat-toolbar>
 
 <div class="column-container">
-  <div class="column mat-elevation-z2">
-    <mat-card class="card">
-      <mat-card-header>
-        <mat-card-title></mat-card-title>
-      </mat-card-header>
+  <div *ngFor="let column of selectedBoard?.columns" class="column mat-elevation-z2">
+    <h2>{{column.title}}</h2>
+    <mat-card class="card" *ngFor="let card of column?.cards">
       <mat-card-content>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus, optio. Placeat quos omnis saepe aperiam ex. Non saepe sed id officia ipsa quo, facilis ea impedit accusamus. Dolor, ipsa laboriosam!
-        Totam sequi modi dolore et nam quas suscipit sapiente, odit voluptatibus similique omnis molestiae hic illum saepe accusantium optio beatae. Repudiandae facilis necessitatibus eos et architecto perspiciatis tenetur impedit adipisci!
-        Mollitia consectetur doloremque dignissimos accusantium delectus sapiente assumenda sequi eum asperiores, veniam facilis. Tempore nihil molestias rerum nobis sunt pariatur distinctio sint soluta fugit qui? Aut cum laudantium tenetur animi!
-        Ab quae sint asperiores. Tempore, officia suscipit, temporibus hic voluptatibus veniam necessitatibus quaerat dignissimos laborum aut fugit corrupti nisi non? Sint at ipsa dolores optio beatae earum, delectus pariatur iure.</p>
+        <b>{{card.title}}</b>
+        <p class="card-description" *ngIf="card.description">{{card.description}}</p>
       </mat-card-content>
-      <mat-card-actions>
-        <button mat-button><mat-icon>star</mat-icon></button>
-        <button mat-button><mat-icon>delete</mat-icon></button>
-      </mat-card-actions>
     </mat-card>
   </div>
 </div>

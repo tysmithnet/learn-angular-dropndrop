@@ -5,27 +5,33 @@
 }
 
 .column-container {
+    display: flex;
     min-width: 1vw;
     min-height: 20em;
-    background-color: red;
 }
 
 .column {
+    flex-direction: column;
     min-width: 15em;
     max-width: 15em;
     height: 100%;
     margin: 1em;
-    background-color: green;
     display: inline-block;
     border-radius: .25em;
 }
 
+.card {
+    margin: 1em 2em;
+}
 
-
-.swipe-icon {
-    position: absolute;
+.card-action-button {
     transform: scale(.5);
-    top: 0;
-    left: 0;
-    color: gray;
+}
+
+.card-action-icon {
+    font-size: 14px;
+}
+
+.card-description {
+    font-size: smaller;
 }

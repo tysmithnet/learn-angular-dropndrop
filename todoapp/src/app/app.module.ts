@@ -9,6 +9,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {MatMenuModule} from '@angular/material/menu';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -18,10 +20,11 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
     DragDropModule,
     MatButtonModule,
     MatCardModule,
-    MatToolbarModule,
     MatIconModule,
+    MatMenuModule,
     MatSidenavModule,
-    NoopAnimationsModule
+    MatToolbarModule,
+    NoopAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

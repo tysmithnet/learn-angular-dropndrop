@@ -1,14 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
+import {Board, Column, Card, DUMMY_BOARDS} from './model';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
+  
   title = 'todoapp';
-  todo = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];
-  done = ['Get up', 'Brush teeth', 'Take a shower', 'Check e-mail', 'Walk dog'];
+  boards: Board[] = DUMMY_BOARDS;
+  selectedBoard: Board | undefined = DUMMY_BOARDS[0];
+  
+  selectBoard(board: Board | undefined) {
+    this.selectedBoard = board;
+  }
+  ngOnInit(): void {
+    // get boards
+  }
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
