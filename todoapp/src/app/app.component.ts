@@ -10,13 +10,14 @@ export class AppComponent implements OnInit{
   
   title = 'todoapp';
   boards: Board[] = DUMMY_BOARDS;
-  selectedBoard: Board | undefined = DUMMY_BOARDS[0];
+  selectedBoard: Board | undefined;
   newColumnText: string | undefined;
   selectBoard(board: Board | undefined) {
     this.selectedBoard = board;
   }
   ngOnInit(): void {
     // get boards
+    this.selectBoard(DUMMY_BOARDS[0])
   }
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {

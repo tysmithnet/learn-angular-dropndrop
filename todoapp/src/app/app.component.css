@@ -6,8 +6,13 @@
 
 .column-container {
     display: flex;
+    align-items: flex-start;
     min-width: 1vw;
     min-height: 20em;
+}
+
+.column-list-group {
+    display: inline-block;
 }
 
 .column {
@@ -23,6 +28,7 @@
     margin: .5em 1em;
     display: flex;
     flex-direction: column;
+    background-color: white;
 }
 
 .card-action-button {

@@ -1,38 +1,73 @@
 <mat-toolbar>
-  <button [matMenuTriggerFor]="menu" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+  <button
+    [matMenuTriggerFor]="menu"
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+  >
     <mat-icon>menu</mat-icon>
   </button>
   <span>My App</span>
   <span class="example-spacer"></span>
-  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+  <button
+    mat-icon-button
+    class="example-icon favorite-icon"
+    aria-label="Example icon-button with heart icon"
+  >
     <mat-icon>favorite</mat-icon>
   </button>
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with share icon"
+  >
     <mat-icon>share</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
-    <button *ngFor="let board of boards; let i = index" mat-menu-item (click)="selectBoard(board)">{{board.title}}</button>
+    <button
+      *ngFor="let board of boards; let i = index"
+      mat-menu-item
+      (click)="selectBoard(board)"
+    >
+      {{ board.title }}
+    </button>
   </mat-menu>
 </mat-toolbar>
 
-<div class="column-container">
-  <div *ngFor="let column of selectedBoard?.columns" class="column mat-elevation-z2">
-    <h2>{{column.title}}</h2>
-    <div class="card mat-elevation-z2" *ngFor="let card of column?.cards">
-      <h4>{{card.title}}</h4>
-      <p>{{card.description}}</p>
-      <div class="card-action-container">
+<div class="column-container" cdkDropList>
+  <div cdkDropListGroup class="column-list-group">
+    <div
+      *ngFor="let column of selectedBoard?.columns"
+      class="column mat-elevation-z2"
+      cdkDrag
+    >
+      <h2>{{ column.title }}</h2>
+      <div cdkDropList [cdkDropListData]="column?.cards">
+        <div
+          class="card mat-elevation-z2"
+          *ngFor="let card of column?.cards"
+          cdkDrag
+        >
+          <h4>{{ card.title }}</h4>
+          <p>{{ card.description }}</p>
+          <div class="card-action-container"></div>
+        </div>
       </div>
     </div>
   </div>
   <div class="column">
     <mat-form-field appearance="fill">
       <mat-label>New Column</mat-label>
-      <input matInput placeholder="Placeholder" [(ngModel)]="newColumnText">
+      <input matInput placeholder="Placeholder" [(ngModel)]="newColumnText" />
     </mat-form-field>
   </div>
 </div>
 
-<button class="add-column-button" mat-fab color="primary" aria-label="Add a column">
+<button
+  class="add-column-button"
+  mat-fab
+  color="primary"
+  aria-label="Add a column"
+>
   <mat-icon>add</mat-icon>
 </button>
