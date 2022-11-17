@@ -33,4 +33,8 @@ export class AppComponent implements OnInit{
       );
     }
   }
+  dropColumn(event: CdkDragDrop<Column[] | undefined>) {
+    if(event.previousIndex == event.currentIndex) return;
+    moveItemInArray(this.selectedBoard?.columns!, event.previousIndex, event.currentIndex);
+  }
 }

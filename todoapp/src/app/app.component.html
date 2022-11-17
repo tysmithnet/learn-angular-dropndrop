@@ -34,7 +34,7 @@
   </mat-menu>
 </mat-toolbar>
 
-<div cdkDropList>
+<div cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="dropColumn($event)">
   <div cdkDropListGroup class="column-container">
     <div
       *ngFor="let column of selectedBoard?.columns"
