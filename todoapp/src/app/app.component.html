@@ -49,6 +49,7 @@
       <mat-form-field class="example-full-width">
         <h1><input name="title" matInput [(ngModel)]="column.title" /></h1>
       </mat-form-field>
+      <button mat-raised-button color="primary">New Card</button>
       <div
         cdkDropList
         [cdkDropListData]="column?.cards"
@@ -60,26 +61,12 @@
           *ngFor="let card of column?.cards"
           cdkDrag
         >
-          <div class="card-header">
-            <div class="card-header-title">{{ card.title }}</div>
-            <button
-              mat-icon-button
-              [matMenuTriggerFor]="cardMenu"
-              aria-label="Example icon-button with a menu"
-            >
-              <mat-icon>more_vert</mat-icon>
-            </button>
-          </div>
-          <p *ngIf="card.description" class="card-description">
-            {{ card.description }}
-          </p>
-          <div class="card-action-container"></div>
-          <mat-menu #cardMenu="matMenu">
-            <button mat-menu-item (click)="deleteCard(column, card)">
-              <mat-icon>delete</mat-icon>
-              <span>Delete</span>
-            </button>
-          </mat-menu>
+            <mat-form-field class="card-header-title">
+              <input name="card-title" matInput [(ngModel)]="card.title" />
+              <button matSuffix mat-icon-button (click)="deleteCard(column, card)">
+                <mat-icon>clear</mat-icon>
+              </button>
+            </mat-form-field>
         </div>
         <!-- /CARD -->
       </div>
