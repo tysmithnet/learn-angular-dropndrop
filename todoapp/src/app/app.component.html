@@ -1,26 +1,35 @@
 <mat-toolbar color="primary">
-  <button
-    [matMenuTriggerFor]="mainMenu"
-    mat-icon-button
-    class="example-icon"
-    aria-label="Example icon-button with menu icon"
-  >
-    <mat-icon>menu</mat-icon>
-  </button>
-  <span>Nimbus</span>
-  <span class="example-spacer"></span>
-  
-  <mat-menu #mainMenu="matMenu">
+  <mat-toolbar-row>
     <button
-      *ngFor="let board of boards; let i = index"
-      mat-menu-item
-      (click)="selectBoard(board)"
+      [matMenuTriggerFor]="mainMenu"
+      mat-icon-button
+      class="example-icon"
+      aria-label="Example icon-button with menu icon"
     >
-      {{ board.title }}
+      <mat-icon>menu</mat-icon>
     </button>
-  </mat-menu>
-</mat-toolbar>
+    <span>Nimbus</span>
 
+    <mat-menu #mainMenu="matMenu">
+      <button
+        *ngFor="let board of boards; let i = index"
+        mat-menu-item
+        (click)="selectBoard(board)"
+      >
+        {{ board.title }}
+      </button>
+    </mat-menu>
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-toolbar>
+  <mat-toolbar-row>
+    <span>{{selectedBoard?.title}}</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button color="warn">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
 
 <div
   cdkDropList
@@ -35,9 +44,13 @@
       cdkDrag
     >
       <mat-form-field class="example-full-width">
-        <h1 class="column-title"><input name="title" matInput [(ngModel)]="column.title" /></h1>
+        <h1 class="column-title">
+          <input name="title" matInput [(ngModel)]="column.title" />
+        </h1>
       </mat-form-field>
-      <button mat-raised-button color="primary" (click)="addCard(column)">Add Card</button>
+      <button mat-raised-button color="primary" (click)="addCard(column)">
+        Add Card
+      </button>
       <div
         cdkDropList
         [cdkDropListData]="column?.cards"
@@ -49,12 +62,16 @@
           *ngFor="let card of column?.cards"
           cdkDrag
         >
-            <mat-form-field class="card-header-title">
-              <input name="card-title" matInput [(ngModel)]="card.title" />
-              <button matSuffix mat-icon-button (click)="deleteCard(column, card)">
-                <mat-icon>clear</mat-icon>
-              </button>
-            </mat-form-field>
+          <mat-form-field class="card-header-title">
+            <input name="card-title" matInput [(ngModel)]="card.title" />
+            <button
+              matSuffix
+              mat-icon-button
+              (click)="deleteCard(column, card)"
+            >
+              <mat-icon>clear</mat-icon>
+            </button>
+          </mat-form-field>
         </div>
         <!-- /CARD -->
       </div>
@@ -75,6 +92,11 @@
     </div>
   </div>
 </div>
-<button class="add-board-button" mat-fab color="accent" aria-label="Add a board">
+<button
+  class="add-board-button"
+  mat-fab
+  color="accent"
+  aria-label="Add a board"
+>
   <mat-icon>add</mat-icon>
 </button>
