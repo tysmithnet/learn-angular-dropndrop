@@ -1,6 +1,6 @@
 <mat-toolbar>
   <button
-    [matMenuTriggerFor]="menu"
+    [matMenuTriggerFor]="mainMenu"
     mat-icon-button
     class="example-icon"
     aria-label="Example icon-button with menu icon"
@@ -23,7 +23,7 @@
   >
     <mat-icon>share</mat-icon>
   </button>
-  <mat-menu #menu="matMenu">
+  <mat-menu #mainMenu="matMenu">
     <button
       *ngFor="let board of boards; let i = index"
       mat-menu-item
@@ -54,14 +54,14 @@
         </div>
       </div>
     </div>
+      <div class="column mat-elevation-z2">
+        <form class="example-form">
+          <mat-form-field class="example-full-width">
+            <mat-label>New Column</mat-label>
+            <input matInput placeholder="Name">
+          </mat-form-field>
+        </form>
+      </div>
   </div>
 </div>
 
-<button
-  class="add-column-button"
-  mat-fab
-  color="primary"
-  aria-label="Add a column"
->
-  <mat-icon>add</mat-icon>
-</button>

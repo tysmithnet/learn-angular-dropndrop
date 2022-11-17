@@ -37,4 +37,7 @@ export class AppComponent implements OnInit{
     if(event.previousIndex == event.currentIndex) return;
     moveItemInArray(this.selectedBoard?.columns!, event.previousIndex, event.currentIndex);
   }
+  addColumn() {
+    
+  }
 }

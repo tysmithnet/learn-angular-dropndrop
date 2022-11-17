@@ -6,6 +6,7 @@
 
 .column-container {
     display: flex;
+    min-height: 75vh;
 }
 
 .column {
