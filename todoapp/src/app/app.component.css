@@ -10,16 +10,20 @@
 }
 
 .column {
+    padding: .5em;
     background-color: white;
     border-radius: .25em;
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
     margin: 1em;
     max-width: 15em;
     min-width: 15em;
 }
 
 .card {
-    margin: .5em 1em;
+    margin-top: 1em;
+    padding: .5em;
+    border-radius: .25em;
     display: flex;
     flex-direction: column;
     background-color: white;
@@ -35,4 +39,5 @@
 
 .card-description {
     font-size: smaller;
+    font-style: italic;
 }

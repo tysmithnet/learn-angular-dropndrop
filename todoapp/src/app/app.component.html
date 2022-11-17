@@ -41,7 +41,9 @@
       class="column mat-elevation-z2"
       cdkDrag
     >
-      <h2>{{ column.title }}</h2>
+      <mat-form-field class="example-full-width">
+        <h1><input matInput [(ngModel)]="column.title"></h1>
+      </mat-form-field>
       <div cdkDropList [cdkDropListData]="column?.cards" (cdkDropListDropped)="drop($event)">
         <div
           class="card mat-elevation-z2"
@@ -49,7 +51,7 @@
           cdkDrag
         >
           <h4>{{ card.title }}</h4>
-          <p>{{ card.description }}</p>
+          <p class="card-description">{{ card.description }}</p>
           <div class="card-action-container"></div>
         </div>
       </div>
@@ -58,7 +60,7 @@
         <form class="example-form">
           <mat-form-field class="example-full-width">
             <mat-label>New Column</mat-label>
-            <input matInput placeholder="Name">
+            <h1><input matInput placeholder="Name"></h1>
           </mat-form-field>
         </form>
       </div>
