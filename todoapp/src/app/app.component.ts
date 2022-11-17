@@ -38,6 +38,12 @@ export class AppComponent implements OnInit{
     moveItemInArray(this.selectedBoard?.columns!, event.previousIndex, event.currentIndex);
   }
   addColumn() {
-    
+
+  }
+  deleteCard(column: Column, card: Card) {
+    let idx = column.cards.findIndex(c => c == card);
+    if (idx > -1) {
+      column.cards.splice(idx, 1);
+    }
   }
 }

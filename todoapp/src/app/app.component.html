@@ -34,7 +34,11 @@
   </mat-menu>
 </mat-toolbar>
 
-<div cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="dropColumn($event)">
+<div
+  cdkDropList
+  cdkDropListOrientation="horizontal"
+  (cdkDropListDropped)="dropColumn($event)"
+>
   <div cdkDropListGroup class="column-container">
     <div
       *ngFor="let column of selectedBoard?.columns"
@@ -42,28 +46,44 @@
       cdkDrag
     >
       <mat-form-field class="example-full-width">
-        <h1><input matInput [(ngModel)]="column.title"></h1>
+        <h1><input matInput [(ngModel)]="column.title" /></h1>
       </mat-form-field>
-      <div cdkDropList [cdkDropListData]="column?.cards" (cdkDropListDropped)="drop($event)">
+      <div
+        cdkDropList
+        [cdkDropListData]="column?.cards"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <!-- CARD -->
         <div
           class="card mat-elevation-z2"
           *ngFor="let card of column?.cards"
           cdkDrag
         >
-          <h4>{{ card.title }}</h4>
-          <p class="card-description">{{ card.description }}</p>
+          <div class="card-header">
+            <div class="card-header-title">{{ card.title }}</div>
+            <button mat-icon-button [matMenuTriggerFor]="cardMenu" aria-label="Example icon-button with a menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+          </div>
+          <p *ngIf="card.description" class="card-description">{{ card.description }}</p>
           <div class="card-action-container"></div>
+          <mat-menu #cardMenu="matMenu">
+            <button mat-menu-item (click)="deleteCard(column, card)">
+              <mat-icon>delete</mat-icon>
+              <span>Delete</span>
+            </button>
+          </mat-menu>
         </div>
+        <!-- /CARD -->
       </div>
     </div>
-      <div class="column mat-elevation-z2">
-        <form class="example-form">
-          <mat-form-field class="example-full-width">
-            <mat-label>New Column</mat-label>
-            <h1><input matInput placeholder="Name"></h1>
-          </mat-form-field>
-        </form>
-      </div>
+    <div class="column mat-elevation-z2">
+      <form class="example-form">
+        <mat-form-field class="example-full-width">
+          <mat-label>New Column</mat-label>
+          <h1><input matInput placeholder="Name" /></h1>
+        </mat-form-field>
+      </form>
+    </div>
   </div>
 </div>
-

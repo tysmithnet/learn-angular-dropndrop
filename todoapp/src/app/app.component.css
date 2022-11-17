@@ -29,12 +29,26 @@
     background-color: white;
 }
 
+.cdk-drop-list {
+    min-height: 20vh;
+}
+
 .card-action-button {
     transform: scale(.5);
 }
 
 .card-action-icon {
     font-size: 14px;
+}
+
+.card-header {
+    display: flex;
+    align-items: baseline;
+    border-bottom: 1px solid #f6f6fb;
+}
+
+.card-header > .card-header-title {
+    flex-grow: 1;
 }
 
 .card-description {
