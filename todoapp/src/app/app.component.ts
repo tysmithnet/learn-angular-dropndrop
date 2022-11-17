@@ -54,4 +54,11 @@ export class AppComponent implements OnInit{
       column.cards.splice(idx, 1);
     }
   }
+  addCard(column: Column) {
+    column.cards.splice(0, 0, {
+      title: "",
+      id: 10,
+      sortOrder: 0,
+    })
+  }
 }

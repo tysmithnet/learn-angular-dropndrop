@@ -49,7 +49,7 @@
       <mat-form-field class="example-full-width">
         <h1><input name="title" matInput [(ngModel)]="column.title" /></h1>
       </mat-form-field>
-      <button mat-raised-button color="primary">New Card</button>
+      <button mat-raised-button color="primary" (click)="addCard(column)">Add Card</button>
       <div
         cdkDropList
         [cdkDropListData]="column?.cards"
