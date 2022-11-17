@@ -48,6 +48,7 @@ export class AppComponent implements OnInit{
     this.selectedBoard?.columns.push(col);
     this.newColumnText = "";
   }
+  
   deleteCard(column: Column, card: Card) {
     let idx = column.cards.findIndex(c => c == card);
     if (idx > -1) {

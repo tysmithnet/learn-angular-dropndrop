@@ -1,4 +1,4 @@
-<mat-toolbar>
+<mat-toolbar color="primary">
   <button
     [matMenuTriggerFor]="mainMenu"
     mat-icon-button
@@ -7,22 +7,9 @@
   >
     <mat-icon>menu</mat-icon>
   </button>
-  <span>My App</span>
+  <span>Nimbus</span>
   <span class="example-spacer"></span>
-  <button
-    mat-icon-button
-    class="example-icon favorite-icon"
-    aria-label="Example icon-button with heart icon"
-  >
-    <mat-icon>favorite</mat-icon>
-  </button>
-  <button
-    mat-icon-button
-    class="example-icon"
-    aria-label="Example icon-button with share icon"
-  >
-    <mat-icon>share</mat-icon>
-  </button>
+  
   <mat-menu #mainMenu="matMenu">
     <button
       *ngFor="let board of boards; let i = index"
@@ -33,6 +20,7 @@
     </button>
   </mat-menu>
 </mat-toolbar>
+
 
 <div
   cdkDropList
@@ -47,7 +35,7 @@
       cdkDrag
     >
       <mat-form-field class="example-full-width">
-        <h1><input name="title" matInput [(ngModel)]="column.title" /></h1>
+        <h1 class="column-title"><input name="title" matInput [(ngModel)]="column.title" /></h1>
       </mat-form-field>
       <button mat-raised-button color="primary" (click)="addCard(column)">Add Card</button>
       <div
@@ -87,3 +75,6 @@
     </div>
   </div>
 </div>
+<button class="add-board-button" mat-fab color="accent" aria-label="Add a board">
+  <mat-icon>add</mat-icon>
+</button>

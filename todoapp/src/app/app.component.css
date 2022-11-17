@@ -50,3 +50,13 @@
     font-size: smaller;
     font-style: italic;
 }
+
+.add-board-button {
+    position: fixed;
+    right: 1em;
+    bottom: 1em;
+}
+
+.column-title {
+    font-weight: 500;
+}
