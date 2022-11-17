@@ -19,7 +19,9 @@ export class AppComponent implements OnInit{
     // get boards
     this.selectBoard(DUMMY_BOARDS[0])
   }
-  drop(event: CdkDragDrop<string[]>) {
+  drop(event: CdkDragDrop<Card[] | undefined>) {
+    if(!event.container.data) return;
+    if(!event.previousContainer.data) return;
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {

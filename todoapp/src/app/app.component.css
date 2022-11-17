@@ -6,22 +6,15 @@
 
 .column-container {
     display: flex;
-    align-items: flex-start;
-    min-width: 1vw;
-    min-height: 20em;
-}
-
-.column-list-group {
-    display: inline-block;
 }
 
 .column {
-    min-width: 15em;
-    max-width: 15em;
-    height: 100%;
-    margin: 1em;
-    display: inline-block;
+    background-color: white;
     border-radius: .25em;
+    display: inline-block;
+    margin: 1em;
+    max-width: 15em;
+    min-width: 15em;
 }
 
 .card {

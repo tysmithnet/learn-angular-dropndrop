@@ -34,15 +34,15 @@
   </mat-menu>
 </mat-toolbar>
 
-<div class="column-container" cdkDropList>
-  <div cdkDropListGroup class="column-list-group">
+<div cdkDropList>
+  <div cdkDropListGroup class="column-container">
     <div
       *ngFor="let column of selectedBoard?.columns"
       class="column mat-elevation-z2"
       cdkDrag
     >
       <h2>{{ column.title }}</h2>
-      <div cdkDropList [cdkDropListData]="column?.cards">
+      <div cdkDropList [cdkDropListData]="column?.cards" (cdkDropListDropped)="drop($event)">
         <div
           class="card mat-elevation-z2"
           *ngFor="let card of column?.cards"
@@ -54,12 +54,6 @@
         </div>
       </div>
     </div>
-  </div>
-  <div class="column">
-    <mat-form-field appearance="fill">
-      <mat-label>New Column</mat-label>
-      <input matInput placeholder="Placeholder" [(ngModel)]="newColumnText" />
-    </mat-form-field>
   </div>
 </div>
 
