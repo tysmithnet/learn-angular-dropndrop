@@ -40,13 +40,14 @@
   (cdkDropListDropped)="dropColumn($event)"
 >
   <div cdkDropListGroup class="column-container">
+    <!-- COLUMN -->
     <div
       *ngFor="let column of selectedBoard?.columns"
       class="column mat-elevation-z2"
       cdkDrag
     >
       <mat-form-field class="example-full-width">
-        <h1><input matInput [(ngModel)]="column.title" /></h1>
+        <h1><input name="title" matInput [(ngModel)]="column.title" /></h1>
       </mat-form-field>
       <div
         cdkDropList
@@ -61,11 +62,17 @@
         >
           <div class="card-header">
             <div class="card-header-title">{{ card.title }}</div>
-            <button mat-icon-button [matMenuTriggerFor]="cardMenu" aria-label="Example icon-button with a menu">
+            <button
+              mat-icon-button
+              [matMenuTriggerFor]="cardMenu"
+              aria-label="Example icon-button with a menu"
+            >
               <mat-icon>more_vert</mat-icon>
             </button>
           </div>
-          <p *ngIf="card.description" class="card-description">{{ card.description }}</p>
+          <p *ngIf="card.description" class="card-description">
+            {{ card.description }}
+          </p>
           <div class="card-action-container"></div>
           <mat-menu #cardMenu="matMenu">
             <button mat-menu-item (click)="deleteCard(column, card)">
@@ -78,12 +85,18 @@
       </div>
     </div>
     <div class="column mat-elevation-z2">
-      <form class="example-form">
-        <mat-form-field class="example-full-width">
-          <mat-label>New Column</mat-label>
-          <h1><input matInput placeholder="Name" /></h1>
-        </mat-form-field>
-      </form>
+      <mat-form-field class="example-full-width">
+        <mat-label>New Column</mat-label>
+        <h1>
+          <input
+            name="newColumnText"
+            matInput
+            placeholder="Name"
+            [(ngModel)]="newColumnText"
+            (keyup.enter)="addColumn()"
+          />
+        </h1>
+      </mat-form-field>
     </div>
   </div>
 </div>

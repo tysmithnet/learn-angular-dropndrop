@@ -38,7 +38,14 @@ export class AppComponent implements OnInit{
     moveItemInArray(this.selectedBoard?.columns!, event.previousIndex, event.currentIndex);
   }
   addColumn() {
-
+    const col:  Column = {
+      cards: [],
+      id: 10,
+      sortOrder: 1,
+      title: this.newColumnText!
+    };
+    this.selectedBoard?.columns.push(col);
+    this.newColumnText = "";
   }
   deleteCard(column: Column, card: Card) {
     let idx = column.cards.findIndex(c => c == card);
