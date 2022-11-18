@@ -62,4 +62,14 @@ export class AppComponent implements OnInit{
       sortOrder: 0,
     })
   }
+  deleteBoard(board: Board) {
+    const boardIdx = this.boards.indexOf(board);
+    if (boardIdx < 0) return;
+    this.boards.splice(boardIdx, 1);
+    if (this.boards.length) {
+      this.selectBoard(this.boards[0]);
+    } else {
+      this.selectBoard(undefined);
+    }
+  }
 }

@@ -22,14 +22,14 @@
   </mat-toolbar-row>
 </mat-toolbar>
 <mat-toolbar>
-  <mat-toolbar-row>
+  <mat-toolbar-row *ngIf="selectedBoard" >
     <mat-form-field class="example-full-width">
       <h1 class="column-title">
-        <input *ngIf="selectedBoard" name="title" matInput [(ngModel)]="selectedBoard.title" />
+        <input name="title" matInput [(ngModel)]="selectedBoard.title" />
       </h1>
     </mat-form-field>
     <span class="example-spacer"></span>
-    <button mat-icon-button color="warn">
+    <button mat-icon-button color="warn" (click)="deleteBoard(selectedBoard)">
       <mat-icon>delete</mat-icon>
     </button>
   </mat-toolbar-row>
@@ -80,7 +80,7 @@
         <!-- /CARD -->
       </div>
     </div>
-    <div class="column mat-elevation-z2">
+    <div *ngIf="selectedBoard" class="column mat-elevation-z2">
       <mat-form-field class="example-full-width">
         <mat-label>New Column</mat-label>
         <h1>
