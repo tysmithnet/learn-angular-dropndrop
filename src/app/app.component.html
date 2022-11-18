@@ -4,7 +4,7 @@
       [matMenuTriggerFor]="mainMenu"
       mat-icon-button
       class="example-icon"
-      aria-label="Example icon-button with menu icon"
+      matTooltip="Open a board"
     >
       <mat-icon>menu</mat-icon>
     </button>
@@ -29,7 +29,7 @@
       </h1>
     </mat-form-field>
     <span class="example-spacer"></span>
-    <button mat-icon-button color="warn" (click)="deleteBoard(selectedBoard)">
+    <button mat-icon-button color="warn" (click)="deleteBoard(selectedBoard)" matTooltip="Delete board">
       <mat-icon>delete</mat-icon>
     </button>
   </mat-toolbar-row>
@@ -48,11 +48,12 @@
       cdkDrag
     >
       <mat-form-field class="example-full-width">
-        <h1 class="column-title">
           <input name="title" matInput [(ngModel)]="column.title" />
-        </h1>
+          <button matSuffix mat-icon-button aria-label="Clear" color="warn" (click)="deleteColumn(column)" matTooltip="Delete column and cards">
+            <mat-icon>delete</mat-icon>
+          </button>
       </mat-form-field>
-      <button mat-raised-button color="primary" (click)="addCard(column)">
+      <button mat-raised-button color="primary" (click)="addCard(column)" matTooltip="Add a card">
         Add Card
       </button>
       <div
@@ -72,8 +73,10 @@
               matSuffix
               mat-icon-button
               (click)="deleteCard(column, card)"
+              color="warn"
+              matTooltip="Delete card"
             >
-              <mat-icon>clear</mat-icon>
+              <mat-icon>delete</mat-icon>
             </button>
           </mat-form-field>
         </div>
@@ -101,6 +104,7 @@
   mat-fab
   color="accent"
   aria-label="Add a board"
+  matTooltip="Add a board"
   (click)="addBoard()"
 >
   <mat-icon>add</mat-icon>

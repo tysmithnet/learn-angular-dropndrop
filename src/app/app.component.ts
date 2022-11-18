@@ -62,6 +62,13 @@ export class AppComponent implements OnInit {
       sortOrder: 0,
     })
   }
+  deleteColumn(column: Column) {
+    this.boards?.forEach(board => {
+      const colIdx = board.columns.findIndex(c => c == column);
+      if (colIdx < 0) return;
+      board.columns.splice(colIdx, 1);
+    });
+  }
   deleteBoard(board: Board) {
     const boardIdx = this.boards.indexOf(board);
     if (boardIdx < 0) return;
