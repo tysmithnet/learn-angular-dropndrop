@@ -23,7 +23,11 @@
 </mat-toolbar>
 <mat-toolbar>
   <mat-toolbar-row>
-    <span>{{selectedBoard?.title}}</span>
+    <mat-form-field class="example-full-width">
+      <h1 class="column-title">
+        <input *ngIf="selectedBoard" name="title" matInput [(ngModel)]="selectedBoard.title" />
+      </h1>
+    </mat-form-field>
     <span class="example-spacer"></span>
     <button mat-icon-button color="warn">
       <mat-icon>delete</mat-icon>
