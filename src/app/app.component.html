@@ -4,7 +4,7 @@
       [matMenuTriggerFor]="mainMenu"
       mat-icon-button
       class="example-icon"
-      matTooltip="Open a board"
+      matTooltip="Open a board" matTooltipShowDelay="1000" 
     >
       <mat-icon>menu</mat-icon>
     </button>
@@ -22,14 +22,19 @@
   </mat-toolbar-row>
 </mat-toolbar>
 <mat-toolbar>
-  <mat-toolbar-row *ngIf="selectedBoard" >
+  <mat-toolbar-row *ngIf="selectedBoard">
     <mat-form-field class="example-full-width">
       <h1 class="column-title">
-        <input name="title" matInput [(ngModel)]="selectedBoard.title" />
+        <input name="title" matInput [(ngModel)]="selectedBoard.title" matTooltipShowDelay="1000" matTooltip="Rename board" />
       </h1>
     </mat-form-field>
     <span class="example-spacer"></span>
-    <button mat-icon-button color="warn" (click)="deleteBoard(selectedBoard)" matTooltip="Delete board">
+    <button
+      mat-icon-button
+      color="warn"
+      (click)="deleteBoard(selectedBoard)"
+      matTooltip="Delete board, columns, and cards" matTooltipShowDelay="1000" 
+    >
       <mat-icon>delete</mat-icon>
     </button>
   </mat-toolbar-row>
@@ -48,12 +53,24 @@
       cdkDrag
     >
       <mat-form-field class="example-full-width">
-          <input name="title" matInput [(ngModel)]="column.title" />
-          <button matSuffix mat-icon-button aria-label="Clear" color="warn" (click)="deleteColumn(column)" matTooltip="Delete column and cards">
+          <input class="column-title" name="title" matInput [(ngModel)]="column.title" matTooltip="Edit name"  matTooltipShowDelay="1000" />
+          <button
+            matSuffix
+            mat-icon-button
+            aria-label="Clear"
+            color="warn"
+            (click)="deleteColumn(column)"
+            matTooltip="Delete column and cards" matTooltipShowDelay="1000" 
+          >
             <mat-icon>delete</mat-icon>
           </button>
       </mat-form-field>
-      <button mat-raised-button color="primary" (click)="addCard(column)" matTooltip="Add a card">
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="addCard(column)"
+        matTooltip="Add a card"
+      >
         Add Card
       </button>
       <div
@@ -68,7 +85,7 @@
           cdkDrag
         >
           <mat-form-field class="card-header-title">
-            <input name="card-title" matInput [(ngModel)]="card.title" />
+            <input name="card-title" matInput [(ngModel)]="card.title" matTooltip="Edit card" matTooltipShowDelay="1000" />
             <button
               matSuffix
               mat-icon-button
@@ -92,7 +109,8 @@
             matInput
             placeholder="Name"
             [(ngModel)]="newColumnText"
-            (keyup.enter)="addColumn()"
+            (keyup.enter)="addColumn()" matTooltipShowDelay="1000" matTooltip="Enter a name for a new column"
+            (focusout)="addColumn()"
           />
         </h1>
       </mat-form-field>
