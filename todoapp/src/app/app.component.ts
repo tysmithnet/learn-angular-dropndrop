@@ -1,14 +1,14 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
-import {Board, Column, Card, DUMMY_BOARDS} from './model';
+import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { Board, Column, Card, DUMMY_BOARDS } from './model';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
-  
+export class AppComponent implements OnInit {
+
   title = 'todoapp';
   boards: Board[] = DUMMY_BOARDS;
   selectedBoard: Board | undefined;
@@ -21,8 +21,8 @@ export class AppComponent implements OnInit{
     this.selectBoard(DUMMY_BOARDS[0])
   }
   drop(event: CdkDragDrop<Card[] | undefined>) {
-    if(!event.container.data) return;
-    if(!event.previousContainer.data) return;
+    if (!event.container.data) return;
+    if (!event.previousContainer.data) return;
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
@@ -35,11 +35,11 @@ export class AppComponent implements OnInit{
     }
   }
   dropColumn(event: CdkDragDrop<Column[] | undefined>) {
-    if(event.previousIndex == event.currentIndex) return;
+    if (event.previousIndex == event.currentIndex) return;
     moveItemInArray(this.selectedBoard?.columns!, event.previousIndex, event.currentIndex);
   }
   addColumn() {
-    const col:  Column = {
+    const col: Column = {
       cards: [],
       id: 10,
       sortOrder: 1,
@@ -48,7 +48,7 @@ export class AppComponent implements OnInit{
     this.selectedBoard?.columns.push(col);
     this.newColumnText = "";
   }
-  
+
   deleteCard(column: Column, card: Card) {
     let idx = column.cards.findIndex(c => c == card);
     if (idx > -1) {
@@ -71,5 +71,14 @@ export class AppComponent implements OnInit{
     } else {
       this.selectBoard(undefined);
     }
+  }
+  addBoard() {
+    const board: Board = {
+      columns: [],
+      id: 100,
+      title: "New Board"
+    }
+    this.boards.push(board);
+    this.selectBoard(board);
   }
 }
