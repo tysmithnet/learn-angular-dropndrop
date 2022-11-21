@@ -39,6 +39,7 @@ export class AppComponent implements OnInit {
     moveItemInArray(this.selectedBoard?.columns!, event.previousIndex, event.currentIndex);
   }
   addColumn() {
+    if (!this.newColumnText?.length) return;
     const col: Column = {
       cards: [],
       id: 10,
