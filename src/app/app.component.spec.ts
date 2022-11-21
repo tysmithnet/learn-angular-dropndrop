@@ -28,4 +28,13 @@ describe('AppComponent', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('.content span')?.textContent).toContain('todoapp app is running!');
   });
+  
+  it('should create a board when the large create board button is pressed', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    const button = compiled.querySelector(".add-board-button");
+    button?.dispatchEvent(new Event("click"))
+    fixture.detectChanges();
+  });
 });
